@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete Strength Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://media.licdn.com/dms/image/D5612AQHe4CYAPQTOcA/article-cover_image-shrink_720_1280/0/1658766924514?e=2147483647&v=beta&t=6yXGU-HyVAWZiyaFWs68cmcsnelRoJV71BczlHirB-w');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 16px;
+            margin-top: 4px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="submit"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 18px;
+            padding: 14px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Concrete Strength Predictor</h2>
+        <form action="{{ url_for('predict_datapoint') }}" method="POST">
+            <div class="form-group">
+                <label for="cement">Cement:</label>
+                <input type="text" id="cement" name="cement" required>
+                <small>Amount of cement (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="blast_furnace_slag">Blast Furnace Slag:</label>
+                <input type="text" id="blast_furnace_slag" name="blast_furnace_slag" required>
+                <small>Amount of blast furnace slag (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="fly_ash">Fly Ash:</label>
+                <input type="text" id="fly_ash" name="fly_ash" required>
+                <small>Amount of fly ash (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="water">Water:</label>
+                <input type="text" id="water" name="water" required>
+                <small>Amount of water (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="superplasticizer">Superplasticizer:</label>
+                <input type="text" id="superplasticizer" name="superplasticizer" required>
+                <small>Amount of superplasticizer (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="coarse_aggregate">Coarse Aggregate:</label>
+                <input type="text" id="coarse_aggregate" name="coarse_aggregate" required>
+                <small>Amount of coarse aggregate (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="fine_aggregate">Fine Aggregate:</label>
+                <input type="text" id="fine_aggregate" name="fine_aggregate" required>
+                <small>Amount of fine aggregate (kg/m³)</small>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" required>
+                <small>Age of concrete (days)</small>
+            </div>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+
+</html>
