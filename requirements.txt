@@ -3,4 +3,6 @@ pandas
 numpy 
 seaborn 
 flask
--e .
+catboost
+xgboost
+#-e .
